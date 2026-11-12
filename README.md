@@ -10,14 +10,22 @@ War: The Card Game is an interactive, single-player version of the classic two-p
 This app is intended for people who want to play a quick, familiar card game in a web browser, including students learning to build simple interactive apps with Streamlit.
 
 ## Current Features
-- Enter a player name and choose a round limit before starting or restarting.
-- Shuffle and deal a standard 52-card deck evenly between the player and computer.
-- Play one round at a time, compare card ranks, and award the cards to the winner.
-- Automatically resolve ties with War rounds and display the tie-break cards.
-- Track pile sizes, rounds played, wars, and the ten most recent rounds.
-- Announce the winner when a pile is exhausted or the round limit is reached.
+- Casino-style table design with a green felt theme, gold accents and custom fonts.
+- Fully illustrated 52-card deck drawn as vector art (pips, aces and mirrored court cards) in `cards.py`, with no image files needed.
+- Four selectable card-back designs (Crimson, Royal Blue, Emerald, Onyx).
+- Animated card dealing, a glowing highlight for the winning card and a shaking "WAR" badge on ties.
+- War rounds show the face-down cards and the revealed tie-breaker for every war in a chain.
+- Scoreboard with live pile stacks, card counts, a share-of-deck bar and the war tally.
+- Flip one round, play 10 at a time, or skip straight to the end.
+- Momentum chart of both piles over time, a round log with mini cards and a stats panel (win rate, best streak, biggest pot).
+- Match record (wins, losses, ties) kept across games in the same visit, with a celebration when you win.
+
+## Running the App
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 
 ## Features Still Planned
-- Add illustrated playing-card faces and more visual feedback for wins.
-- Track match wins and losses across multiple games in the same visit.
 - Add a published online version so players can access the game without running it locally.
+- Add optional sound effects for flips and wars.

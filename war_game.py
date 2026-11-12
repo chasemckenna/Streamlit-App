@@ -64,16 +64,21 @@ def play_round(game: dict) -> dict:
     computer_opening = computer_card
     pot.extend((player_card, computer_card))
     war_cards: list[tuple[Card | None, Card | None]] = []
+    war_facedown: list[tuple[int, int]] = []
     war_count = 0
 
     while player_card[0] == computer_card[0]:
         war_count += 1
         game["wars"] += 1
+        player_down = computer_down = 0
         for _ in range(3):
             if player_deck:
                 pot.append(player_deck.pop(0))
+                player_down += 1
             if computer_deck:
                 pot.append(computer_deck.pop(0))
+                computer_down += 1
+        war_facedown.append((player_down, computer_down))
 
         player_card = player_deck.pop(0) if player_deck else None
         computer_card = computer_deck.pop(0) if computer_deck else None
@@ -106,9 +111,12 @@ def play_round(game: dict) -> dict:
         "player_opening": player_opening,
         "computer_opening": computer_opening,
         "war_cards": war_cards,
+        "war_facedown": war_facedown,
         "war_count": war_count,
         "winner": round_winner,
         "cards_awarded": len(pot),
+        "player_count": len(player_deck),
+        "computer_count": len(computer_deck),
     }
     game["history"].append(game["last_round"])
 
